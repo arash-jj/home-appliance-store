@@ -1,12 +1,20 @@
 # Home Appliance Store  🛒
 
+ * Project Status : in Progress 
+
 ## Preview 📷
 
 ## Features ✨
 
 ## Technologies Used 🛠️
+- NEXT.js
+- Typescript
+- Tailwind CSS
+- Sanity
+- Jest
 
 ## Design 🎨
+Visit the figma file [click here](https://www.figma.com/community/file/1252561852327562039/ecommerce-website-web-page-design-ui-kit-interior-landing-page) 
 
 ## Installation 💻
 ```bash
