@@ -12,6 +12,8 @@ body {
   --color-primary: #B88E2F;
   --color-secondary: #FCF8F3;
   --color-textBackground: #FFF3E3;
+  --color-titleText: #333333;
+  --color-subTitleText: #666666;
 }
 @layer components  {
   .navBarContainer {
@@ -23,12 +25,33 @@ body {
   .featuresContainer {
     display: flex; gap: 1.6rem;
   }
+  .housePartsCard {
+    width: 381px; height: 546px; border-radius: 8px; overflow: hidden;
+  }
 }
 @media (prefers-color-scheme: dark) {
   
 }
 .heroBackground {
   background-image: url("../public/furniture-background.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+}
+.diningRoomBg {
+  background-image: url("../public/dining-room.png");
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+}
+.LivingRoomBg {
+  background-image: url("../public/living-room.png");
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+}
+.bedRoomBg {
+  background-image: url("../public/bed-room.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto auto;

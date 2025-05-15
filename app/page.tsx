@@ -20,6 +20,42 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="">
+        <section className="flex flex-col items-center">
+          <section className="w-[1183px] h-[685px] mt-10">
+            <div className="flex flex-col justify-center items-center">
+              <p className="font-bold text-[32px] text-titleText">Browse The Range</p>
+              <p className="text-xl text-subTitleText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div className="flex flex-row gap-5 mt-10">
+              <div className="housePartsCard">
+                <div className="diningRoomBg h-[480px] w-full">
+                  {/* None */}
+                </div>
+                <div className="text-2xl h-[66px] font-semibold text-subTitleText flex justify-center items-center">
+                  <p>Dining</p>
+                </div>
+              </div>
+              <div className="housePartsCard">
+                <div className="LivingRoomBg h-[480px] w-full">
+                  {/* None */}
+                </div>
+                <div className="text-2xl h-[66px] font-semibold text-subTitleText flex justify-center items-center">
+                  <p>Living</p>
+                </div>
+              </div>
+              <div className="housePartsCard">
+                <div className="bedRoomBg h-[480px] w-full">
+                  {/* None */}
+                </div>
+                <div className="text-2xl h-[66px] font-semibold text-subTitleText flex justify-center items-center">
+                  <p>Bedroom</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </section>
     </div>
   );
 }
