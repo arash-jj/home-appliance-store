@@ -10,7 +10,6 @@
 - NEXT.js
 - Typescript
 - Tailwind CSS
-- Sanity
 - Jest
 
 ## Design 🎨
