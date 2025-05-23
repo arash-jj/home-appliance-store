@@ -1,6 +1,5 @@
+import TopProducts from '@/components/TopProducts';
 import Link from 'next/link'
-import Data from '../data/db.json'
-import { centsToDollar } from '@/lib/utils';
 export default function Home() {
   return (
     <div>
@@ -60,33 +59,7 @@ export default function Home() {
             <div className="flex justify-center items-center font-bold text-[40px] my-3">
               <p>Our Products</p>
             </div>
-            <div className="w-full h-[924px] flex flex-row flex-wrap gap-8">
-              {
-              Data.slice(0,8).map((item) => (
-                <div key={item.id} className="w-[285px] h-[446px] bg-cardBackground relative">
-                  <div className="w-[286px] h-[301px]">
-                    <img src={item.productImage} alt="Product Image" />
-                    {item.discountedPercentage > 0 && 
-                      <div className="w-[48px] h-[48px] flex justify-center items-center rounded-full text-white bg-cardDiscountBackground absolute top-4 right-4">
-                        <span>{item.discountedPercentage}%</span>
-                      </div>
-                    }
-                  </div>
-                  <div className="w-[249px] h-[99px] flex flex-col justify-between m-auto mt-2">
-                    <p className="font-semibold text-2xl text-cardMainText">{item.productName}</p>
-                    <p className="text-cardSubText">{item.subDescription}</p>
-                    {item.discountedPrice > 0 
-                      ?  <div className='flex justify-between'>
-                            <p className='text-xl text-cardMainText font-semibold'>{centsToDollar(item.discountedPrice)}$</p>
-                            <p className='text-xl text-cardDiscountText line-through'>{centsToDollar(item.price)}$</p>
-                          </div>
-                      :  <p className='text-xl text-cardMainText font-semibold'>{centsToDollar(item.price)}$</p>
-                    }
-                  </div>
-                </div> 
-              ))
-            }
-            </div>
+            <TopProducts/>
             <div className="flex justify-center items-center">
               <Link href="/shop" className='w-[245px] h-[48px] border-2 border-primary text-primary font-semibold flex justify-center items-center mt-3.5'>
                 <span>Show More</span>
