@@ -3,6 +3,8 @@
 import React from 'react'
 import Data from '../data/db.json'
 import { centsToDollar } from '@/lib/utils';
+import Link from 'next/link';
+import { ArrowRightLeft, Heart, Share2 } from 'lucide-react';
 
 const TopProducts = () => {
     const cardsHoverHandler = ()=>{
@@ -28,8 +30,26 @@ const TopProducts = () => {
             {
                 Data.slice(0,8).map((item) => (
                     <div onMouseEnter={cardsHoverHandler} key={item.id} className="card w-[285px] h-[446px] bg-cardBackground relative overflow-hidden">
-                        <div className="popup w-full h-full absolute bg-cardsPopupBackground top-[446px] duration-300">
-                            
+                        <div className="popup w-full h-full absolute bg-cardsPopupBackground top-[446px] duration-300 flex flex-col justify-center items-center">
+                            <div className="w-5/6">
+                                <Link className='w-[202px] h-[48px] m-auto mb-2 bg-white text-primary flex justify-center items-center' href="/cart">
+                                    <span>Add to cart</span>
+                                </Link>
+                                <div className="flex justify-between text-white font-semibold">
+                                    <div className="flex items-center gap-px cursor-pointer">
+                                        <Share2/>
+                                        <span>Share</span>
+                                    </div>
+                                    <Link className='flex items-center gap-px' href="/compare">
+                                        <ArrowRightLeft size={18}/>
+                                        <span>Compare</span>
+                                    </Link>
+                                    <div className="flex items-center gap-px cursor-pointer">
+                                        <Heart/>
+                                        <span>Like</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="w-[286px] h-[301px]">
                             <img src={item.productImage} alt="Product Image" />
