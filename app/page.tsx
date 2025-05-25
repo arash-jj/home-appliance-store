@@ -1,3 +1,4 @@
+import Slider from '@/components/Slider';
 import TopProducts from '@/components/TopProducts';
 import Link from 'next/link'
 export default function Home() {
@@ -67,6 +68,9 @@ export default function Home() {
             </div>
           </section>
         </section>
+      </section>
+      <section className='w-full h-[670px] bg-sliderBackground mt-8'>
+        <Slider/>
       </section>
     </div>
   );

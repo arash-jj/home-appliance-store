@@ -32,7 +32,7 @@ const TopProducts = () => {
                     <div onMouseEnter={cardsHoverHandler} key={item.id} className="card w-[285px] h-[446px] bg-cardBackground relative overflow-hidden">
                         <div className="popup w-full h-full absolute bg-cardsPopupBackground top-[446px] duration-300 flex flex-col justify-center items-center">
                             <div className="w-5/6">
-                                <Link className='w-[202px] h-[48px] m-auto mb-2 bg-white text-primary flex justify-center items-center' href="/cart">
+                                <Link className='w-[202px] h-[48px] m-auto mb-5 bg-white text-primary flex justify-center items-center' href="/cart">
                                     <span>Add to cart</span>
                                 </Link>
                                 <div className="flex justify-between text-white font-semibold">

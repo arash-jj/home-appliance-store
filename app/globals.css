@@ -20,6 +20,7 @@ body {
   --color-cardDiscountText: #B0B0B0;
   --color-cardDiscountBackground: #E97171;
   --color-cardsPopupBackground: rgba(58, 58, 58, 0.8);
+  --color-sliderBackground: #FCF8F3;
 }
 @layer components  {
   .navBarContainer {
