@@ -1,3 +1,4 @@
+import InfiniteSlider from '@/components/InfiniteSlider';
 import Slider from '@/components/Slider';
 import TopProducts from '@/components/TopProducts';
 import Link from 'next/link'
@@ -71,6 +72,13 @@ export default function Home() {
       </section>
       <section className='w-full h-[670px] bg-sliderBackground mt-8'>
         <Slider/>
+      </section>
+      <section className="w-full h-[780px] mt-8">
+        <div className="flex flex-col justify-center items-center">
+          <p className="font-semibold text-[20px] text-[#616161]">Share your setup with</p>
+          <p className="font-bold text-[40px] text-[#3A3A3A]">#FuniroFurniture</p>
+        </div>
+        <InfiniteSlider/>
       </section>
     </div>
   );

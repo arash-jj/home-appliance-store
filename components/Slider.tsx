@@ -66,14 +66,14 @@ const Slider = () => {
                 }
                 {sliderIndex > 0 && (
                     <button 
-                        className="w-[48px] h-[48px] rounded-full bg-white absolute left-5 top-1/2 flex justify-center items-center z-20"
+                        className="w-[48px] h-[48px] rounded-full bg-white absolute left-5 top-1/2 flex justify-center items-center z-20 cursor-pointer"
                         onClick={() => setSliderIndex(sliderIndex - 1)}>
                         <ChevronLeft color='#B88E2F'/>
                     </button>
                 )}
                 {sliderIndex < images.length - 1 && (
                     <button 
-                        className="w-[48px] h-[48px] rounded-full bg-white absolute right-5 top-1/2 flex justify-center items-center z-20"
+                        className="w-[48px] h-[48px] rounded-full bg-white absolute right-5 top-1/2 flex justify-center items-center z-20 cursor-pointer"
                         onClick={() => setSliderIndex(sliderIndex + 1)}>
                         <ChevronRight color='#B88E2F'/>
                     </button>
