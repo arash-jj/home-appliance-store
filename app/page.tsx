@@ -73,10 +73,10 @@ export default function Home() {
       <section className='w-full h-[670px] bg-sliderBackground mt-8'>
         <Slider/>
       </section>
-      <section className="w-full h-[780px] mt-8">
+      <section className="w-full h-auto mt-8">
         <div className="flex flex-col justify-center items-center">
           <p className="font-semibold text-[20px] text-[#616161]">Share your setup with</p>
-          <p className="font-bold text-[40px] text-[#3A3A3A]">#FuniroFurniture</p>
+          <p className="font-bold text-[40px] text-[#3A3A3A] mb-1">#FuniroFurniture</p>
         </div>
         <InfiniteSlider/>
       </section>
