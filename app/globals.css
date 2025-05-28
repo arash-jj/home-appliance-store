@@ -22,6 +22,7 @@ body {
   --color-cardsPopupBackground: rgba(58, 58, 58, 0.8);
   --color-sliderBackground: #FCF8F3;
   --color-footerSubTexts: #9F9F9F;
+  --color-shopBenefitsBackground: #FAF3EA;
 }
 @layer components  {
   .navBarContainer {
