@@ -1,8 +1,11 @@
+import PageHeader from '@/components/PageHeader'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>shop</div>
+    <div>
+      <PageHeader currentPage="Shop"/>
+    </div>
   )
 }
 

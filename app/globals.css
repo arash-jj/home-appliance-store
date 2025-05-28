@@ -65,4 +65,10 @@ body {
   background-repeat: no-repeat;
   background-size: auto auto;
 }
+.headerBackground {
+  background-image: url("../public/header-background.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto auto;
+}
 
