@@ -11,9 +11,8 @@ const page = async ({searchParams} : {searchParams:{page? : string}}) => {
   const totalPages = Math.ceil(total / perPage)
   return (
     <div className='mb-10'>
-      {/* TODO : filtering products section */}
       <PageHeader currentPage="Shop"/>
-      <ShopContent products={products}/>
+      <ShopContent products={products} totalProducts={total}/>
       <Pagination currentPage={currentPage} totalPages={totalPages}/>
     </div>
   )

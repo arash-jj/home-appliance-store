@@ -23,6 +23,7 @@ body {
   --color-sliderBackground: #FCF8F3;
   --color-footerSubTexts: #9F9F9F;
   --color-shopBenefitsBackground: #FAF3EA;
+  --color-filterSectionBackground: #F9F1E7;
 }
 @layer components  {
   .navBarContainer {
