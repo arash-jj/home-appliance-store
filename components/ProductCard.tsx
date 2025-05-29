@@ -11,7 +11,8 @@ import React, { useState } from 'react'
 const ProductCard = ({product} : {product: Product}) => {
     const [isHovered, setIsHovered] = useState(false)
     return (
-        <div 
+        <Link
+            href={`/single-product/${product.id}`} 
             className="card w-[285px] h-[446px] bg-cardBackground relative overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -66,7 +67,7 @@ const ProductCard = ({product} : {product: Product}) => {
                 </p>
             )}
             </div>
-        </div>
+        </Link>
     )
 }
 

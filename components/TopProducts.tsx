@@ -29,7 +29,7 @@ const TopProducts = () => {
         <div className='w-full h-[924px] flex flex-row flex-wrap gap-8'>
             {
                 Data.slice(0,8).map((item) => (
-                    <div onMouseEnter={cardsHoverHandler} key={item.id} className="card w-[285px] h-[446px] bg-cardBackground relative overflow-hidden">
+                    <Link href={`/single-product/${item.id}`} onMouseEnter={cardsHoverHandler} key={item.id} className="card w-[285px] h-[446px] bg-cardBackground relative overflow-hidden">
                         <div className="popup w-full h-full absolute bg-cardsPopupBackground top-[446px] duration-300 flex flex-col justify-center items-center">
                             <div className="w-5/6">
                                 <Link className='w-[202px] h-[48px] m-auto mb-5 bg-white text-primary flex justify-center items-center' href="/cart">
@@ -70,7 +70,7 @@ const TopProducts = () => {
                             :  <p className='text-xl text-cardMainText font-semibold'>{centsToDollar(item.price)}$</p>
                             }
                         </div>
-                    </div> 
+                    </Link> 
                 ))
             }
         </div>
