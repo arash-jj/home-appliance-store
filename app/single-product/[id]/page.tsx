@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Data from '@/data/db.json';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import SingleProductInfo from '@/components/SingleProductInfo';
 
 interface PageProps {
     params: {
@@ -27,6 +29,29 @@ const Page = ({ params }: PageProps) => {
                     <ChevronRight/>
                 </Link>
                 <p className='flex justify-center items-center text-lg ml-2'>{product.productName}</p>
+            </section>
+            <section className="px-10 py-5">
+                <section className="flex flex-row h-[820px]">
+                    <div className="w-45/100 flex flex-row">
+                        <div className="w-7/30 flex flex-col gap-7">
+                            {product.previewImages && (
+                                product.previewImages.map((img, idx) => (
+                                    <Image 
+                                        key={idx} 
+                                        src={img} 
+                                        alt={product.productName} 
+                                        width={83} 
+                                        height={55} 
+                                        className='bg-filterSectionBackground rounded-lg'/>
+                                ))
+                            )}
+                        </div>
+                        <div className={product.previewImages ? "w-2/3" : "w-full"}>
+                            <Image src={product.productImage} alt={product.productName} width={423} height={500} className='bg-filterSectionBackground'/>
+                        </div>
+                    </div>
+                    <SingleProductInfo product={product}/>
+                </section>
             </section>
         </div>
     )

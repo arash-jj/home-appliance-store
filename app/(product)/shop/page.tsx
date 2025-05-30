@@ -4,18 +4,24 @@ import React from 'react'
 import ShopContent from '@/components/ShopContent';
 import Pagination from '@/components/Pagination';
 
-const page = async ({searchParams} : {searchParams:{page? : string}}) => {
-  const currentPage = Number(searchParams.page) || 1;
+interface PageProps {
+  searchParams: {
+    page?: string;
+  }
+}
+
+async function Page({ searchParams }: PageProps) {
+  const page = searchParams?.page ? parseInt(searchParams.page) : 1;
   const perPage = 6;
-  const {products, total} = await getPaginatedProducts(currentPage , perPage)
-  const totalPages = Math.ceil(total / perPage)
+  const { products, total } = await getPaginatedProducts(page, perPage);
+  const totalPages = Math.ceil(total / perPage);
   return (
     <div className='mb-10'>
       <PageHeader currentPage="Shop"/>
       <ShopContent products={products} totalProducts={total}/>
-      <Pagination currentPage={currentPage} totalPages={totalPages}/>
+      <Pagination currentPage={page} totalPages={totalPages}/>
     </div>
   )
 }
 
-export default page
+export default Page
