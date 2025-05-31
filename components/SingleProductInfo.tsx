@@ -1,6 +1,6 @@
 import { centsToDollar } from '@/lib/utils'
 import { Product } from '@/types/type'
-import { Star } from 'lucide-react'
+import { Facebook, Star, Twitter, Linkedin } from 'lucide-react'
 import React from 'react'
 import AddingToCart from './AddingToCart'
 
@@ -53,6 +53,30 @@ const SingleProductInfo = ({product} : SingleProduct) => {
                 </div>
             </div>
             <AddingToCart/>
+            <div className="flex flex-col gap-4 pt-10">
+                <div className="flex flex-row gap-2.5 text-footerSubTexts relative">
+                    <p className="min-w-[70px] after:content-[':'] after:absolute after:left-18">SKU</p>
+                    <p className="">SS001</p>
+                </div>
+                <div className="flex flex-row gap-2.5 text-footerSubTexts relative">
+                    <p className="min-w-[70px] after:content-[':'] after:absolute after:left-18">Category</p>
+                    <p className="">{product.category}</p>
+                </div>
+                <div className="flex flex-row gap-2.5 text-footerSubTexts relative">
+                    <p className="min-w-[70px] after:content-[':'] after:absolute after:left-18">Tags</p>
+                    {product.tags.map(tag => (
+                        <span>{tag},</span>
+                    ))}
+                </div>
+                <div className="flex flex-row gap-2.5 text-footerSubTexts relative">
+                    <p className="min-w-[70px] after:content-[':'] after:absolute after:left-18">Share</p>
+                    <div className="flex flex-row gap-2 text-black">
+                        <Facebook/>
+                        <Twitter/>
+                        <Linkedin/>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

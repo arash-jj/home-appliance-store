@@ -31,7 +31,7 @@ const Page = ({ params }: PageProps) => {
                 <p className='flex justify-center items-center text-lg ml-2'>{product.productName}</p>
             </section>
             <section className="px-10 py-5">
-                <section className="flex flex-row h-[820px]">
+                <section className="flex flex-row h-[780px]">
                     <div className="w-45/100 flex flex-row">
                         <div className="w-7/30 flex flex-col gap-7">
                             {product.previewImages && (
