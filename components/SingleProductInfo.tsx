@@ -2,6 +2,7 @@ import { centsToDollar } from '@/lib/utils'
 import { Product } from '@/types/type'
 import { Star } from 'lucide-react'
 import React from 'react'
+import AddingToCart from './AddingToCart'
 
 interface SingleProduct {
     product: Product
@@ -42,14 +43,16 @@ const SingleProductInfo = ({product} : SingleProduct) => {
             <div className="my-3">
                 <span className="text-footerSubTexts mb-1">Color</span>
                 <div className="flex flex-row gap-5">
-                    {product.colors.map(color => (
+                    {product.colors.map((color, idx) => (
                         <div
+                            key={idx}
                             className="w-[30px] h-[30px] rounded-full mt-1"
                             style={{ backgroundColor: color }}
                         ></div>
                     ))}
                 </div>
             </div>
+            <AddingToCart/>
         </div>
     )
 }
