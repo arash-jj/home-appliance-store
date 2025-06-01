@@ -64,8 +64,8 @@ const SingleProductInfo = ({product} : SingleProduct) => {
                 </div>
                 <div className="flex flex-row gap-2.5 text-footerSubTexts relative">
                     <p className="min-w-[70px] after:content-[':'] after:absolute after:left-18">Tags</p>
-                    {product.tags.map(tag => (
-                        <span>{tag},</span>
+                    {product.tags.map((tag, idx) => (
+                        <span key={idx}>{tag},</span>
                     ))}
                 </div>
                 <div className="flex flex-row gap-2.5 text-footerSubTexts relative">

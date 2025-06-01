@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import SingleProductInfo from '@/components/SingleProductInfo';
+import MoreProductInfo from '@/components/MoreProductInfo';
 
 interface PageProps {
     params: {
@@ -52,6 +53,10 @@ const Page = ({ params }: PageProps) => {
                     </div>
                     <SingleProductInfo product={product}/>
                 </section>
+                <MoreProductInfo 
+                description={product.description} 
+                additionalInfo={product.additionalInformation}
+                review={product.customerReview}/>
             </section>
         </div>
     )
