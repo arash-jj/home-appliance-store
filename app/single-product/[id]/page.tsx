@@ -6,6 +6,9 @@ import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import SingleProductInfo from '@/components/SingleProductInfo';
 import MoreProductInfo from '@/components/MoreProductInfo';
+import { getRelatedProducts } from '@/lib/getRelatedProducts';
+import ProductCard from '@/components/ProductCard';
+import { Product } from '@/types/type';
 
 interface PageProps {
     params: {
@@ -18,6 +21,7 @@ const Page = ({ params }: PageProps) => {
     if (!product) {
         notFound();
     }
+    const relatedProducts = getRelatedProducts(product, 4);
     return (
         <div>
             <section className="w-full h-[100px] px-10 py-2 bg-filterSectionBackground flex flex-row gap-1.5">
@@ -57,6 +61,19 @@ const Page = ({ params }: PageProps) => {
                 description={product.description} 
                 additionalInfo={product.additionalInformation}
                 review={product.customerReview}/>
+                <div className="my-3.5">
+                    <h1 className="text-4xl text-center">Related Products</h1>
+                    <div className='flex flex-row flex-wrap justify-center gap-8 my-5 m-auto'>
+                        {relatedProducts.map((product: Product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
+                    </div>
+                    <div className="flex justify-center items-center">
+                        <Link href="/shop" className='w-[245px] h-[48px] border-2 border-primary text-primary font-semibold flex justify-center items-center mt-3.5'>
+                            <span>Show More</span>
+                        </Link>
+                    </div>
+                </div>
             </section>
         </div>
     )
