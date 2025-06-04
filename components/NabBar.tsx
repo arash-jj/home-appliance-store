@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import SideBarCart from './SideBarCart'
 
 const NabBar = () => {
     return (
@@ -33,9 +34,7 @@ const NabBar = () => {
                 <Link href="/">
                     <img src="/navbar/Heart.svg" alt="Heart Logo" />
                 </Link>
-                <Link href="/">
-                    <img src="/navbar/Shopping-cart.svg" alt="Shopping-cart Logo" />
-                </Link>
+                <SideBarCart/>
             </div>
         </div>
     )
