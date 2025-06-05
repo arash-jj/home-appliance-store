@@ -21,13 +21,22 @@ const AddingToCart = ({productId, productColor, productSize} : PageProps) => {
     const addToCartHandler = ()=>{
         const savedCart = localStorage.getItem("cart")
         let cartItems : CartItem[] = savedCart ? JSON.parse(savedCart) : [];
-        const newItem = {
-            productId,
-            color: productColor,
-            size: productSize,
-            quantity: numberOfProducts
+        const existingItemIndex = cartItems.findIndex(item=>{
+            item.color === productColor &&
+            item.productId === productId &&
+            item.size  === productSize  
+        })
+        if ( existingItemIndex >= 0){
+            cartItems[existingItemIndex].quantity = numberOfProducts;
+        }else{
+            const newItem = {
+                productId,
+                color: productColor,
+                size: productSize,
+                quantity: numberOfProducts
+            }
+            cartItems.push(newItem)
         }
-        cartItems.push(newItem)
         localStorage.setItem('cart', JSON.stringify(cartItems));
     }
     const productCompare = ()=>{
