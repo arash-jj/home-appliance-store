@@ -1,7 +1,9 @@
+"use client"
+
 import { centsToDollar } from '@/lib/utils'
 import { Product } from '@/types/type'
 import { Facebook, Star, Twitter, Linkedin } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
 import AddingToCart from './AddingToCart'
 
 interface SingleProduct {
@@ -9,6 +11,8 @@ interface SingleProduct {
 }
 
 const SingleProductInfo = ({product} : SingleProduct) => {
+    const [selectedColor,setSelectedColor] = useState(product.colors[0])
+    const [selectedSize,setSelectedSize] = useState("LG")
     return (
         <div className="w-55/100">
             <h1 className='text-[42px] mb-4'>{product.productName}</h1>
@@ -35,9 +39,9 @@ const SingleProductInfo = ({product} : SingleProduct) => {
             <div className="my-3">
                 <span className="text-footerSubTexts mb-1">Size</span>
                 <div className="flex flex-row gap-2.5">
-                    <div className="px-2.5 py-2 bg-filterSectionBackground rounded-md">l</div>
-                    <div className="px-2.5 py-2 bg-filterSectionBackground rounded-md">Xl</div>
-                    <div className="px-2.5 py-2 bg-filterSectionBackground rounded-md">XS</div>
+                    <div onClick={()=>{setSelectedSize("LG")}} className="px-2.5 py-2 bg-filterSectionBackground rounded-md cursor-pointer">lG</div>
+                    <div onClick={()=>{setSelectedSize("XL")}} className="px-2.5 py-2 bg-filterSectionBackground rounded-md cursor-pointer">Xl</div>
+                    <div onClick={()=>{setSelectedSize("XS")}} className="px-2.5 py-2 bg-filterSectionBackground rounded-md cursor-pointer">XS</div>
                 </div>
             </div>
             <div className="my-3">
@@ -46,13 +50,14 @@ const SingleProductInfo = ({product} : SingleProduct) => {
                     {product.colors.map((color, idx) => (
                         <div
                             key={idx}
-                            className="w-[30px] h-[30px] rounded-full mt-1"
+                            onClick={()=>{setSelectedColor(color)}}
+                            className="w-[30px] h-[30px] rounded-full mt-1 cursor-pointer border border-footerSubTexts"
                             style={{ backgroundColor: color }}
                         ></div>
                     ))}
                 </div>
             </div>
-            <AddingToCart/>
+            <AddingToCart productId={product.id} productColor={selectedColor} productSize={selectedSize}/>
             <div className="flex flex-col gap-4 pt-10">
                 <div className="flex flex-row gap-2.5 text-footerSubTexts relative">
                     <p className="min-w-[70px] after:content-[':'] after:absolute after:left-18">SKU</p>

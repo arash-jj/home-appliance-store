@@ -4,10 +4,31 @@ import { Minus, Plus } from 'lucide-react'
 import Link from 'next/link'
 import React, {useState} from 'react'
 
-const AddingToCart = () => {
+interface PageProps {
+    productId: number,
+    productColor: string,
+    productSize: string
+}
+interface CartItem {
+    productId: number,
+    color: string,
+    size: string,
+    quantity: number,
+}
+
+const AddingToCart = ({productId, productColor, productSize} : PageProps) => {
     const [numberOfProducts, setNumberOfProducts] = useState(1)
     const addToCartHandler = ()=>{
-        //ToDo : adding to cart logic
+        const savedCart = localStorage.getItem("cart")
+        let cartItems : CartItem[] = savedCart ? JSON.parse(savedCart) : [];
+        const newItem = {
+            productId,
+            color: productColor,
+            size: productSize,
+            quantity: numberOfProducts
+        }
+        cartItems.push(newItem)
+        localStorage.setItem('cart', JSON.stringify(cartItems));
     }
     const productCompare = ()=>{
         //ToDo : sending data to compare page

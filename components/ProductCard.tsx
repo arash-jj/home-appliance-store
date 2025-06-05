@@ -21,7 +21,7 @@ const ProductCard = ({product} : {product: Product}) => {
             <div className="w-5/6">
                 <Link
                 className="w-[202px] h-[48px] m-auto mb-5 bg-white text-primary flex justify-center items-center"
-                href="/cart"
+                href={`/single-product/${product.id}`}
                 >
                 <span>Add to cart</span>
                 </Link>
