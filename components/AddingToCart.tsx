@@ -21,11 +21,11 @@ const AddingToCart = ({productId, productColor, productSize} : PageProps) => {
     const addToCartHandler = ()=>{
         const savedCart = localStorage.getItem("cart")
         let cartItems : CartItem[] = savedCart ? JSON.parse(savedCart) : [];
-        const existingItemIndex = cartItems.findIndex(item=>{
-            item.color === productColor &&
-            item.productId === productId &&
-            item.size  === productSize  
-        })
+        const existingItemIndex = cartItems.findIndex(item => 
+            item.productId === productId && 
+            item.color === productColor && 
+            item.size === productSize
+        )
         if ( existingItemIndex >= 0){
             cartItems[existingItemIndex].quantity = numberOfProducts;
         }else{
