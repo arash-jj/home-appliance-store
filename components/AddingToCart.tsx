@@ -58,7 +58,7 @@ const AddingToCart = ({productId, productColor, productSize} : PageProps) => {
                 <p>Add To Cart</p>
             </div>
             <Link 
-            href="/product-comparison" 
+            href={`/product-comparison/${productId}`} 
             onClick={productCompare}
             className='px-6 py-2 border-[1px] rounded-xl border-footerSubTexts cursor-pointer flex justify-center items-center'>
                 <Plus size={18}/>

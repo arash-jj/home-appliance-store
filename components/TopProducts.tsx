@@ -40,7 +40,7 @@ const TopProducts = () => {
                                         <Share2/>
                                         <span>Share</span>
                                     </div>
-                                    <Link className='flex items-center gap-px' href="/compare">
+                                    <Link className='flex items-center gap-px' href={`/product-comparison/${item.id}`}>
                                         <ArrowRightLeft size={18}/>
                                         <span>Compare</span>
                                     </Link>

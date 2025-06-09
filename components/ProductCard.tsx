@@ -30,7 +30,7 @@ const ProductCard = ({product} : {product: Product}) => {
                     <Share2 />
                     <span>Share</span>
                 </div>
-                <Link className="flex items-center gap-px" href="/compare">
+                <Link className="flex items-center gap-px" href={`/product-comparison/${product.id}`} >
                     <ArrowRightLeft size={18} />
                     <span>Compare</span>
                 </Link>

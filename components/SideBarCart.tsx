@@ -117,7 +117,7 @@ const SideBarCart = () => {
                     <div className="flex flex-row justify-evenly items-center">
                         <Link className='px-7 py-2 border rounded-4xl' href="/cart">Cart</Link>
                         <Link className='px-7 py-2 border rounded-4xl' href="/checkout">Checkout</Link>
-                        <Link className='px-7 py-2 border rounded-4xl' href="/product-comparison">Comparison</Link>
+                        <Link className='px-7 py-2 border rounded-4xl' href={`/product-comparison/1`}>Comparison</Link>
                     </div>
                 </div>
             )}
