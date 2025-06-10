@@ -57,7 +57,10 @@ const SingleProductInfo = ({product} : SingleProduct) => {
                     ))}
                 </div>
             </div>
-            <AddingToCart productId={product.id} productColor={selectedColor} productSize={selectedSize}/>
+            <AddingToCart 
+            productId={product.id} productColor={selectedColor} 
+            productSize={selectedSize} productPrice={product.price} 
+            productImg={product.productImage} productName={product.productName} />
             <div className="flex flex-col gap-4 pt-10">
                 <div className="flex flex-row gap-2.5 text-footerSubTexts relative">
                     <p className="min-w-[70px] after:content-[':'] after:absolute after:left-18">SKU</p>

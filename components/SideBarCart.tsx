@@ -71,7 +71,7 @@ const SideBarCart = () => {
                             onClick={()=>setIsSideBarOpen(false)}
                             />
                         </div>
-                        <div className="w-full min-h-130 px-2 mt-2 overflow-y-scroll" style={{scrollbarWidth : "none"}}>
+                        <div className="w-full h-130 px-2 mt-2 overflow-y-scroll" style={{scrollbarWidth : "none"}}>
                             {getCartProducts().map(({product, quantity, color, size}) => (
                                 product && (
                                     <div key={`${product.id}-${color}-${size}`} className="flex items-center justify-between py-4">

@@ -7,16 +7,22 @@ import React, {useState} from 'react'
 interface PageProps {
     productId: number,
     productColor: string,
-    productSize: string
+    productSize: string,
+    productPrice: number,
+    productImg: string,
+    productName: string,
 }
 interface CartItem {
     productId: number,
     color: string,
     size: string,
     quantity: number,
+    price: number,
+    image: string,
+    name: string,
 }
 
-const AddingToCart = ({productId, productColor, productSize} : PageProps) => {
+const AddingToCart = ({productId, productColor, productSize, productPrice, productImg, productName} : PageProps) => {
     const [numberOfProducts, setNumberOfProducts] = useState(1)
     const addToCartHandler = ()=>{
         const savedCart = localStorage.getItem("cart")
@@ -33,7 +39,10 @@ const AddingToCart = ({productId, productColor, productSize} : PageProps) => {
                 productId,
                 color: productColor,
                 size: productSize,
-                quantity: numberOfProducts
+                quantity: numberOfProducts,
+                price: productPrice,
+                image: productImg,
+                name: productName
             }
             cartItems.push(newItem)
         }
