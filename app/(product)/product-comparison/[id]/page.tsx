@@ -10,8 +10,8 @@ import { centsToDollar } from '@/lib/utils';
 import { ChevronDown, Star } from 'lucide-react';
 
 interface PageProps {
-    params: {
-        id: number
+    params?: {
+        id?: number
     }
 }
 
@@ -21,6 +21,7 @@ const page = ({ params } : PageProps) => {
     const chosenProduct = Data.find(item => item.id == chosenProductId)
     const product = Data.find(item => String(item.id) === String(params?.id));
     if(!product) notFound()
+    if (!chosenProduct) return <div>Loading...</div>
     return (
         <div>
             <PageHeader currentPage='Product Comparison'/>
@@ -57,13 +58,13 @@ const page = ({ params } : PageProps) => {
                 </div>
                 <div className="w-[280px] flex flex-col gap-2.5">
                     <div className="w-full h-auto overflow-hidden rounded-2xl bg-filterSectionBackground">
-                        <Image src={chosenProduct?.productImage} alt={chosenProduct?.productName} width={280} height={177}/>
+                        <Image src={chosenProduct.productImage} alt={chosenProduct.productName} width={280} height={177}/>
                     </div>
-                    <h1 className="text-2xl line-clamp-1">{chosenProduct?.productName}</h1>
+                    <h1 className="text-2xl line-clamp-1">{chosenProduct.productName}</h1>
                     <p className="text-lg tracking-wide">{centsToDollar(chosenProduct.price)} $</p>
                     <div className="flex items-center gap-4 mb-6 relative">
                     <div className="flex gap-1">
-                        <span>{chosenProduct?.rate}</span>
+                        <span>{chosenProduct.rate}</span>
                         {[...Array(5)].map((_, index) => (
                             <Star
                                 key={index}
@@ -77,7 +78,7 @@ const page = ({ params } : PageProps) => {
                         ))}
                     </div>
                     <span className="text-sm text-gray-500 before:content-['|'] before:absolute before:left-[135px]">
-                        {`${chosenProduct?.customerReview} Review`}
+                        {`${chosenProduct.customerReview} Review`}
                     </span>
                 </div>
                 </div>
