@@ -31,56 +31,58 @@ const page = ({ params } : PageProps) => {
                     <Link href="/shop" className='text-footerSubTexts pr-1 py-0.5 text-[20px] border-b border-footerSubTexts'>View More</Link>
                 </div>
                 <div className="w-[280px] flex flex-col gap-2.5">
-                    <div className="w-full h-auto overflow-hidden rounded-2xl bg-filterSectionBackground">
+                    <div className="w-full h-[300px] overflow-hidden rounded-2xl bg-filterSectionBackground">
                         <Image src={product.productImage} alt={product.productName} width={280} height={177}/>
                     </div>
                     <h1 className="text-2xl line-clamp-1">{product.productName}</h1>
                     <p className="text-lg tracking-wide">{centsToDollar(product.price)} $</p>
                     <div className="flex items-center gap-4 mb-6 relative">
-                    <div className="flex gap-1">
-                        <span>{product.rate}</span>
-                        {[...Array(5)].map((_, index) => (
-                            <Star
-                                key={index}
-                                size={20}
-                                className={`${
-                                    index < (product.rate || 0)
-                                        ? 'fill-yellow-400 text-yellow-400' 
-                                        : 'text-gray-300'
-                                }`}
-                            />
-                        ))}
+                        <div className="flex gap-1">
+                            <span>{product.rate}</span>
+                            {[...Array(5)].map((_, index) => (
+                                <Star
+                                    key={index}
+                                    size={20}
+                                    className={`${
+                                        index < (product.rate || 0)
+                                            ? 'fill-yellow-400 text-yellow-400' 
+                                            : 'text-gray-300'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                        <span className="text-sm text-gray-500 before:content-['|'] before:absolute before:left-[135px]">
+                            {`${product.customerReview} Review`}
+                        </span>
                     </div>
-                    <span className="text-sm text-gray-500 before:content-['|'] before:absolute before:left-[135px]">
-                        {`${product.customerReview} Review`}
-                    </span>
-                </div>
+                    <Link className='m-auto bg-primary text-white text-xl px-7 py-2.5' href={`/single-product/${product.id}`}>Add to Cart</Link>
                 </div>
                 <div className="w-[280px] flex flex-col gap-2.5">
-                    <div className="w-full h-auto overflow-hidden rounded-2xl bg-filterSectionBackground">
+                    <div className="w-full h-[300px] overflow-hidden rounded-2xl bg-filterSectionBackground">
                         <Image src={chosenProduct.productImage} alt={chosenProduct.productName} width={280} height={177}/>
                     </div>
                     <h1 className="text-2xl line-clamp-1">{chosenProduct.productName}</h1>
                     <p className="text-lg tracking-wide">{centsToDollar(chosenProduct.price)} $</p>
                     <div className="flex items-center gap-4 mb-6 relative">
-                    <div className="flex gap-1">
-                        <span>{chosenProduct.rate}</span>
-                        {[...Array(5)].map((_, index) => (
-                            <Star
-                                key={index}
-                                size={20}
-                                className={`${
-                                    index < (chosenProduct.rate || 0)
-                                        ? 'fill-yellow-400 text-yellow-400' 
-                                        : 'text-gray-300'
-                                }`}
-                            />
-                        ))}
+                        <div className="flex gap-1">
+                            <span>{chosenProduct.rate}</span>
+                            {[...Array(5)].map((_, index) => (
+                                <Star
+                                    key={index}
+                                    size={20}
+                                    className={`${
+                                        index < (chosenProduct.rate || 0)
+                                            ? 'fill-yellow-400 text-yellow-400' 
+                                            : 'text-gray-300'
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                        <span className="text-sm text-gray-500 before:content-['|'] before:absolute before:left-[135px]">
+                            {`${chosenProduct.customerReview} Review`}
+                        </span>
                     </div>
-                    <span className="text-sm text-gray-500 before:content-['|'] before:absolute before:left-[135px]">
-                        {`${chosenProduct.customerReview} Review`}
-                    </span>
-                </div>
+                    <Link className='m-auto bg-primary text-white text-xl px-7 py-2.5' href={`/single-product/${chosenProductId}`}>Add to Cart</Link>
                 </div>
                 <div className="w-[280px] h-[177px] relative ">
                     <p className="text-2xl font-semibold mt-2">Add a Product</p>
