@@ -5,6 +5,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import React,{ useState, useEffect } from 'react'
 import { ICountry, IState, City } from 'country-state-city'
+import Data from '@/data/db.json';
+import { X } from 'lucide-react'
+import { centsToDollar } from '@/lib/utils'
 
 interface FormikTypes {
     firstName: string,
@@ -19,11 +22,28 @@ interface FormikTypes {
     email: string,
     additionalInformation: string,
 }
+interface CartItem {
+    productId: number,
+    color: string,
+    size: string,
+    quantity: number,
+    price: number,
+    image: string,
+    name: string
+}
 
 const page = () => {
     const [countries, setCountries] = useState<ICountry[]>([])
     const [states, setStates] = useState<IState[]>([])
     const [cities, setCities] = useState<any[]>([])
+    const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const calculateTotal = () => {
+        return cartItems.reduce((total, item) => {
+            const product = Data.find(p => p.id === item.productId)
+            if (!product) return total
+            const price = product.discountedPrice > 0 ? product.discountedPrice : product.price
+            return total + (price * item.quantity)
+    }, 0)}
     const formik = useFormik<FormikTypes>({
         initialValues: {
             firstName: "",
@@ -42,16 +62,16 @@ const page = () => {
             alert(JSON.stringify(values))
         },
         validationSchema: Yup.object({
-            firstName: Yup.string().max(12,"The First Name is too long").required("required"),
-            lastName: Yup.string().max(12,"The Last Name is too long").required("required"),
+            firstName: Yup.string().max(12,"The First Name is too long").required("Please Enter Your First Name"),
+            lastName: Yup.string().max(12,"The Last Name is too long").required("Please Enter Your Last Name"),
             componyName: Yup.string().max(10,"The Compony Name in too long").optional(),
-            country : Yup.string().required("required"),
-            streetAddress : Yup.string().required("required"),
-            city : Yup.string().required("required"),
-            province : Yup.string().required("required"),
-            zipcode : Yup.string().required("required"),
-            phone : Yup.string().required("required"),
-            email: Yup.string().email('Invalid email address').required('Required'),
+            country : Yup.string().required("Please Choose Your Country"),
+            streetAddress : Yup.string().required("Please Enter Your Address"),
+            city : Yup.string().required("Please Choose Your City"),
+            province : Yup.string().required("Please Choose Your Province"),
+            zipcode : Yup.string().required("Please Enter Your ZIP Code"),
+            phone : Yup.string().required("Please Enter Your Phone Number"),
+            email: Yup.string().email('Invalid email address').required('Please Enter Your Email Address'),
             additionalInformation: Yup.string().optional()
         })
     })
@@ -80,14 +100,19 @@ const page = () => {
         formik.setFieldValue('city', '')
         }
     }, [formik.values.state])
+    useEffect(() => {
+        const items = localStorage.getItem("cart")
+        if (items) {
+            setCartItems(JSON.parse(items))
+        }
+    },[])
     return (
         <div>
             <PageHeader currentPage='Checkout'/>
-            <div className="flex flex-row p-10 bg-red-100">
+            <div className="flex flex-row justify-around p-10">
                 <form onSubmit={formik.handleSubmit} className='flex flex-col gap-8'>
-                    {/* group one */}
+                    <h1 className="font-semibold text-4xl">Billing details</h1>
                     <div className="flex flex-row gap-8">
-                        {/*  */}
                         <div className="flex flex-col gap-4">
                             <label htmlFor="firstName">First Name</label>
                             <input 
@@ -99,7 +124,6 @@ const page = () => {
                                     <div className="text-red-500 text-sm">{formik.errors.firstName}</div>
                                 ) : null}
                         </div>
-                         {/*  */}
                         <div className="flex flex-col gap-4">
                             <label htmlFor="lastName">Last Name</label>
                             <input 
@@ -112,7 +136,6 @@ const page = () => {
                                 ) : null}
                         </div>
                     </div>
-                    {/* group two */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="componyName">Compony Name (Optional)</label>
                         <input 
@@ -124,7 +147,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.componyName}</div>
                         ) : null}
                     </div>
-                    {/* group three */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="country">Country / Region</label>
                         <select  
@@ -143,7 +165,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.country}</div>
                         ) : null}
                     </div>
-                    {/* group four */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="streetAddress">Street Address</label>
                         <input 
@@ -155,7 +176,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.streetAddress}</div>
                         ) : null}
                     </div>
-                    {/* group five */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="state">Province</label>
                         <select  
@@ -175,7 +195,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.state}</div>
                         ) : null}
                     </div>
-                    {/* group six */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="city">Town / City</label>
                         <select  
@@ -195,7 +214,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.city}</div>
                         ) : null}
                     </div>
-                    {/* group seven */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="zipcode">ZIP code</label>
                         <input 
@@ -207,7 +225,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.zipcode}</div>
                         ) : null}
                     </div>
-                    {/* group eight */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="phone">Phone</label>
                         <input 
@@ -219,7 +236,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.phone}</div>
                         ) : null}
                     </div>
-                    {/* group nine */}
                     <div className="flex flex-col gap-4">
                         <label htmlFor="email">Email</label>
                         <input 
@@ -231,7 +247,6 @@ const page = () => {
                             <div className="text-red-500 text-sm">{formik.errors.email}</div>
                         ) : null}
                     </div>
-                    {/* group ten */}
                     <div className="flex flex-col gap-4">
                         <input 
                             placeholder='Additional Information'
@@ -244,7 +259,48 @@ const page = () => {
                         ) : null}
                     </div>
                 </form>
-                <div className=""></div>
+                <div className=" p-5 w-[600px]">
+                    <div className="flex flex-col gap-1 border-b border-footerSubTexts">
+                        <div className="flex flex-row items-center justify-between">
+                            <p className="text-2xl">Product</p>
+                            <p className="text-2xl">Subtotal</p>
+                        </div>
+                        {cartItems.map(item => (
+                            <div key={`name-${item.name}-color-${item.color}-size-${item.size}`} className="flex flex-row items-center justify-between">
+                                <div className="flex flex-row items-center gap-2">
+                                    <p className="text-footerSubTexts">{item.name}</p>
+                                    <X size={16}/>
+                                    <span>{item.quantity}</span>
+                                </div>
+                                <p>{centsToDollar(item.price)}$</p>
+                            </div>
+                        ))}
+                        <div className="flex flex-row items-center justify-between">
+                            <p className="text-2xl">Total</p>
+                            <p className="text-2xl text-primary">{centsToDollar(calculateTotal())}$</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-2.5 py-2">
+                        <div className="flex flex-row items-center gap-2">
+                            <input type="checkbox" name="payment" id="payment" />
+                            <p className="text-sm">Direct Bank Transform</p>
+                        </div>
+                        <p className="text-footerSubTexts font-light">
+                            Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                        </p>
+                        <p className="text-footerSubTexts font-light">
+                            Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our 
+                            <span className="font-semibold cursor-pointer text-black"> privacy policy</span>.
+                        </p>
+                    </div>
+                    <div className="w-full flex justify-center items-center">
+                        <form onSubmit={formik.handleSubmit}>
+                            <button type='submit' className="border rounded-2xl px-8 py-2 font-light cursor-pointer">
+                                Place Order
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     )
