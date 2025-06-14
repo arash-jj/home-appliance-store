@@ -1,16 +1,35 @@
 # Home Appliance Store  🛒
 
- * Project Status : in Progress 
-
-## Preview 📷
-
 ## Features ✨
 
+- Home Page 
+    - Sidebar Cart
+    - Manual Slider 
+    - Infinite Slider 
+- Shop Page 
+    - Product Pagination 
+    - Adding Product to Cart
+    - Filtering Product 
+- Single Product Page 
+    - Adding to Cart with Details (color, size, quantity)
+    - Showing Related Products
+- Compare Page 
+    - Comparing Products by Choosing Them 
+- Cart Page
+    - Showing the Added to Cart Products with Details
+    - The User is Able to Delete Them
+    - Showing Total Amount of Money
+- Checkout Page 
+    - Adding the Order Details (name , country/city/state, address, etc)
+    - Placing the order 
+- Contact Page 
+    - Adding User Information and Message
 ## Technologies Used 🛠️
 - NEXT.js
 - Typescript
 - Tailwind CSS
-- Jest
+- Formik
+- Yup
 
 ## Design 🎨
 Visit the figma file [click here](https://www.figma.com/community/file/1252561852327562039/ecommerce-website-web-page-design-ui-kit-interior-landing-page) 
